@@ -25,8 +25,8 @@ public class lift_door_open : MonoBehaviour
         // 2. Calculate local open position (Left = subtract local X, Right = add local X)
         float direction = isLeftDoor ? -1f : 1f;
         openLocalPos = new Vector3(
-            closedLocalPos.x + (openDistance * direction), 
-            closedLocalPos.y, 
+            closedLocalPos.x + (openDistance * direction),
+            closedLocalPos.y,
             closedLocalPos.z
         );
 
@@ -36,18 +36,24 @@ public class lift_door_open : MonoBehaviour
 
     void Update()
     {
-        // Press 'O' to open/close
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            ToggleDoor();
-        }
-
         // Smoothly move door in LOCAL space
         transform.localPosition = Vector3.MoveTowards(
-            transform.localPosition, 
-            targetLocalPos, 
+            transform.localPosition,
+            targetLocalPos,
             speed * Time.deltaTime
         );
+    }
+
+    public void Open()
+    {
+        isOpen = true;
+        targetLocalPos = openLocalPos;
+    }
+
+    public void Close()
+    {
+        isOpen = false;
+        targetLocalPos = closedLocalPos;
     }
 
     public void ToggleDoor()

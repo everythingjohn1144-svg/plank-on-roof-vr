@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Top_Floor_button6 : MonoBehaviour
+public class SkyRocketFloor : MonoBehaviour
 {
-   public lift_movement lift;
+     public lift_movement lift;
     public int floorNumber;
     public string handTag = "Hand";
     public float cooldown = 1.0f;
